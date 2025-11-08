@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------------
     
     // --- Konfigurasi Server (Wajib berjalan bersama server.js) ---
-    const BACKEND_URL = 'https://vos-backend.onrender.com/api';
+    const BACKEND_URL = 'https://vertexoptimasolusi.onrender.com/api';
     const pages = document.querySelectorAll('.page-content');
     const durationSelect = document.getElementById('select-duration');
     const totalInput = document.getElementById('input-total');
