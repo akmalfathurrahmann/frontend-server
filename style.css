@@ -1,0 +1,206 @@
+/* Poin 8, 12, 13: Font Default dan Variabel Warna */
+html, body {
+    height: 100%; 
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden; 
+    
+    /* Light Mode (Default) */
+    --bg-color: #FFFFF0;
+    --text-color: #121212;
+    --primary-color: #6F42C1;  /* Ungu */
+    --secondary-color: #FFC700; /* Kuning */
+    --white: #FFFFFF;
+    --black: #121212;
+    
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #FFFFF0;
+    --primary-color: #FFC700;  /* Kuning */
+    --secondary-color: #6F42C1; /* Ungu */
+}
+
+/* Poin 7: Penampung Utama */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    min-height: 100vh;
+    padding-top: 50px; 
+}
+
+.container {
+    position: relative;
+    width: 90%;
+    max-width: 450px; 
+    text-align: center;
+    padding-top: 50px; 
+    padding-bottom: 50px; 
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* FIXED: Pastikan container mengisi tinggi layar */
+    min-height: calc(100vh - 100px); /* 100vh dikurangi padding atas/bawah body */
+    box-sizing: border-box; /* Agar padding tidak menambah tinggi */
+}
+
+/* Header (Mode Mobile / Default) */
+.header-top {
+    position: absolute; 
+    top: 20px;
+    left: 20px; 
+    right: 20px; 
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* --- MEDIA QUERY KHUSUS UNTUK LAYAR KOMPUTER --- */
+@media (min-width: 768px) {
+    body {
+        padding-top: 80px; 
+        align-items: center; 
+    }
+
+    .header-top {
+        position: fixed; 
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 20px 50px; 
+        background-color: var(--bg-color); 
+        z-index: 100;
+        justify-content: space-between; 
+        gap: 50px; 
+    }
+    
+    .lang-group {
+        flex-direction: row; 
+        align-items: center;
+    }
+
+    .lang-btn { margin-bottom: 0; margin-right: 15px; }
+
+    .container {
+        padding-top: 0;
+        padding-bottom: 0;
+        min-height: auto;
+        margin: auto; 
+        justify-content: center; /* Pusatkan di PC */
+    }
+    
+    .page-content {
+        flex-grow: 0; /* Jangan paksakan tumbuh di PC */
+        justify-content: center; /* Pusatkan di PC */
+        padding-top: 0;
+    }
+    
+    .footer {
+        margin-top: auto; /* Footer tetap di bawah di PC */
+        padding-top: 20px;
+    }
+}
+/* --- AKHIR MEDIA QUERY --- */
+
+
+/* Tombol Bahasa dan Dark Mode (Tetap Sama) */
+.lang-group { display: flex; flex-direction: column; align-items: flex-start; }
+.lang-btn { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 5px; display: flex; justify-content: space-between; align-items: center; width: 80px; transition: background-color 0.2s; text-align: left; background-color: var(--primary-color); color: var(--white); padding: 8px 15px; border-radius: 20px; cursor: pointer; border: none; }
+body.dark-mode .lang-btn { color: var(--black); }
+.lang-dot { width: 15px; height: 15px; border-radius: 50%; margin-left: 10px; border: 1px solid var(--white); flex-shrink: 0; transition: background-color 0.2s, border-color 0.2s; }
+#lang-id .yellow-dot, #lang-en .white-dot { background-color: var(--white); }
+#lang-id.active .yellow-dot, #lang-en.active .white-dot { background-color: var(--secondary-color); border-color: var(--secondary-color); }
+.theme-switch-wrapper { display: flex; align-items: center; gap: 10px; }
+.theme-switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+.theme-switch input { display: none; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--primary-color); transition: .4s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider:before { transform: translateX(26px); }
+.theme-icon { font-size: 24px; transition: color 0.3s, opacity 0.3s; }
+.moon-icon { color: var(--primary-color); opacity: 1; }
+.sun-icon { color: var(--secondary-color); opacity: 0.3; }
+body.dark-mode .moon-icon { opacity: 0.3; }
+body.dark-mode .sun-icon { color: var(--primary-color); opacity: 1; }
+
+
+/* --- PERBAIKAN LAYOUT MOBILE --- */
+.page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    /* FIXED: (Middle and Center) */
+    justify-content: center; /* Posisikan item di tengah vertikal */
+    
+    padding-top: 50px; /* Jarak dari header */
+    width: 100%; 
+    
+    /* FIXED: (Dorong Footer ke Bawah) */
+    flex-grow: 1; /* Ambil semua ruang kosong yang tersedia */
+}
+/* --------------------------------- */
+
+.title-main { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 48px; color: var(--text-color); margin: 0 0 10px 0; }
+.subtitle { font-weight: 400; font-size: 18px; color: var(--text-color); margin: 0 0 10px 0; }
+.voucher-input { width: 80%; max-width: 250px; border: none; border-bottom: 3px solid var(--primary-color); background-color: transparent; font-size: 20px; text-align: center; padding: 10px; color: var(--text-color); font-family: 'Montserrat', sans-serif; font-weight: 700; margin-bottom: 20px; }
+.voucher-input:focus { outline: none; }
+
+/* Tombol Dasar */
+.btn { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; border-radius: 30px; padding: 15px 30px; cursor: pointer; transition: transform 0.2s; margin-top: 15px; border: none; }
+.btn:hover { transform: scale(1.05); }
+.btn-primary { background-color: var(--primary-color); color: var(--white); width: 80%; max-width: 300px; margin-top: 20px; margin-bottom: 10px; }
+body.dark-mode .btn-primary { color: var(--black); }
+.btn-secondary-outline { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; border: 3px solid var(--secondary-color); border-radius: 30px; padding: 15px 30px; cursor: pointer; transition: all 0.2s; background-color: transparent; color: var(--secondary-color); width: 80%; max-width: 300px; margin-top: 20px; }
+.btn-secondary-outline:hover { background-color: var(--secondary-color); color: var(--black); transform: scale(1.05); }
+.btn-link { background: none; border: none; color: var(--primary-color); font-size: 16px; font-weight: 700; padding: 5px 10px; margin-top: 10px; text-decoration: underline; width: auto; max-width: none; align-self: center; }
+.btn-link:hover { color: var(--secondary-color); transform: none; }
+
+.small-text { font-size: 14px; margin-top: 15px; color: var(--text-color); }
+.small-text a { color: var(--primary-color); font-weight: 700; text-decoration: none; }
+
+/* --- PERBAIKAN FOOTER MOBILE --- */
+.footer { 
+    position: relative; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    
+    /* FIXED: (Dorong Footer ke Bawah) */
+    margin-top: auto; /* Ini akan mendorong footer ke bawah .page-content */
+    padding-top: 15px; /* Beri jarak sedikit dari konten di atasnya */
+    
+    text-align: center; 
+    width: 100%; 
+}
+/* --------------------------------- */
+.footer p { font-size: 14px; }
+.footer .logo { width: 100px; height: auto; display: block; margin: 5px auto 0 auto; }
+
+/* Form Pembelian */
+.buy-form { display: flex; flex-direction: column; align-items: center; width: 100%; margin-bottom: 20px; }
+.buy-form label { font-size: 14px; font-weight: 700; color: var(--primary-color); margin-top: 25px; }
+.form-input { width: 80%; max-width: 300px; background-color: transparent; border: 3px solid var(--secondary-color); border-radius: 30px; padding: 15px 20px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; color: var(--text-color); text-align: center; margin-top: 10px; }
+.form-input:focus { outline: none; border-color: var(--primary-color); }
+.form-input option { background-color: var(--bg-color); color: var(--text-color); }
+
+/* Kartu Kuning/Ungu (QRIS & Sukses) */
+.card-yellow { background-color: var(--secondary-color); border-radius: 25px; padding: 30px; display: flex; flex-direction: column; align-items: center; margin-top: 20px; width: 80%; max-width: 300px; }
+.card-yellow, .card-yellow .card-text, .card-yellow .qris-price, .card-yellow .qris-timer { color: var(--black); }
+body.dark-mode .card-yellow, body.dark-mode .card-yellow .card-text, body.dark-mode .card-yellow .qris-price, body.dark-mode .card-yellow .qris-timer { color: var(--text-color); }
+
+/* Teks Voucher di Kartu Sukses */
+.voucher-code-display { background-color: var(--primary-color); color: var(--white); font-weight: 700; font-size: 18px; padding: 10px 20px; border-radius: 20px; margin-bottom: 15px; }
+.qris-timer { font-size: 16px; font-weight: 700; }
+.qris-image { width: 200px; height: 200px; border-radius: 10px; margin: 15px 0; }
+.qris-price { font-size: 20px; font-weight: 900; margin: 0; }
+.card-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 24px; color: var(--primary-color); margin: 0 0 15px 0; }
+.card-text { font-size: 14px; font-weight: 400; text-align: center; max-width: 250px; margin-bottom: 15px; }
+.card-yellow .btn-primary { width: 100%; }

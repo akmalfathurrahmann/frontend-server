@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voucher WiFi</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        
+        <header class="header-top">
+            <div class="lang-group">
+                <button id="lang-id" class="lang-btn" data-lang="id">
+                    <span class="lang-text">ID</span>
+                    <span class="lang-dot yellow-dot"></span>
+                </button>
+                <button id="lang-en" class="lang-btn" data-lang="en">
+                    <span class="lang-text">EN</span>
+                    <span class="lang-dot white-dot"></span>
+                </button>
+            </div>
+            
+<div class="theme-switch-wrapper">
+    <span class="theme-icon sun-icon">☀️</span> 
+    
+    <label class="theme-switch" for="theme-toggle">
+        <input type="checkbox" id="theme-toggle" />
+        <span class="slider round"></span>
+    </label>
+
+    <span class="theme-icon moon-icon">🌙</span> 
+</div>
+        </header>
+        
+        <main class="page-content" id="page-login">
+            <h1 class="title-main" data-lang-key="login_title">MASUK</h1>
+            <p class="subtitle" data-lang-key="login_subtitle">Kode Voucher</p>
+            
+            <input type="text" class="voucher-input" />
+            
+            <button class="btn btn-primary" id="login-submit-btn" data-lang-key="login_button">MASUK</button>
+            
+            <p class="small-text">
+                <span data-lang-key="login_prompt">Belum punya kode?</span>
+                <a href="#" id="buy-link" data-lang-key="login_buy_link">Beli di sini.</a>
+            </p>
+        </main>
+
+        <main class="page-content" id="page-buy-options" style="display: none;">
+            <h1 class="title-main" data-lang-key="voucher_title">VOUCHER</h1>
+            <button class="btn btn-secondary-outline" id="btn-contact-admin" data-lang-key="contact_admin">HUBUNGI ADMIN</button>
+            <button class="btn btn-secondary-outline" id="btn-buy-self" data-lang-key="buy_self">BELI SENDIRI</button>
+            
+            <button type="button" class="btn btn-link" id="btn-back-to-login-from-options" data-lang-key="success_back">KEMBALI</button>
+        </main>
+        
+        <main class="page-content" id="page-buy-form" style="display: none;">
+            <h1 class="title-main" data-lang-key="voucher_title">VOUCHER</h1>
+            <form class="buy-form">
+                <label for="input-name" data-lang-key="form_name">NAMA</label>
+                <input type="text" id="input-name" class="form-input">
+                
+                <label for="select-duration" data-lang-key="form_duration">DURASI</label>
+                <select id="select-duration" class="form-input">
+                    </select>
+                
+                <label for="input-total" data-lang-key="form_total">TOTAL</label>
+                <input type="text" id="input-total" class="form-input" value="Rp 0" readonly>
+                
+                <button type="button" class="btn btn-primary" id="btn-pay" data-lang-key="form_pay">BAYAR</Tbutton>
+                
+                <button type="button" class="btn btn-link" id="btn-back-to-options" data-lang-key="success_back">KEMBALI</button>
+            </form>
+        </main>
+
+        <main class="page-content" id="page-qris" style="display: none;">
+            <div class="card-yellow">
+                <span class="qris-timer">05:00</span>
+                <img src="https://placehold.co/200x200/FFC700/121212.png?text=QRIS" alt="QRIS Code" class="qris-image"> 
+                <p class="qris-price">Rp 0</p>
+            </div>
+            <button type="button" class="btn btn-secondary-outline" id="btn-paid" data-lang-key="qris_paid">SUDAH BAYAR?</button>
+        </main>
+
+        <main class="page-content" id="page-success-buy" style="display: none;">
+            <div class="card-yellow">
+                <h2 class="card-title" data-lang-key="success_title">BERHASIL</h2>
+                <div class="voucher-code-display"></div>
+                <p class="card-text" data-lang-key="success_buy_note">Silakan kembali dan masukkan kode-nya</p>
+                <button type="button" class="btn btn-primary" id="btn-success-back" data-lang-key="success_back">KEMBALI</button>
+            </div>
+        </main>
+        
+        <main class="page-content" id="page-success-login" style="display: none;">
+            <div class="card-yellow">
+                <h2 class="card-title" data-lang-key="success_title">BERHASIL</h2>
+                <p class="card-text" data-lang-key="success_login_note">Voucher berhasil dimasukkan. Selamat menikmati pengalaman internet yang stabil.</p>
+                <button type="button" class="btn btn-primary" id="btn-success-ok" data-lang-key="success_ok">OKE</button>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p data-lang-key="powered_by">Didukung oleh:</p>
+            <img src="logo.png" alt="Logo" class="logo"> 
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
